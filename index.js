@@ -6,14 +6,19 @@ const app = express();
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
+const cors = require('cors');
+app.use(cors());
+
 const postcss = require('postcss');
+const stripAnsi = require('strip-ansi');
 
 const atomised = require('postcss-atomised');
 const version = require('postcss-atomised/package.json').version;
 
-app.get('/', (req, res) => res.send(`remote api for <a href="https://github.com/atomised-css/postcss-atomised">postcss-atomised</a> ${version}<br> POST some json that looks like <code>{"css": ".red {color: red}"}</code> to this URL`))
+app.get('/', (req, res) => res.send(`remote api for <a href="https://github.com/atomised-css/postcss-atomised">postcss-atomised</a> ${version}<br> POST some json that looks like <code>{"css": ".red {color: red}"}</code> to this URL`));
 
-app.post('/', (req, res) => {
+app.options('/api', cors());
+app.post('/api', (req, res) => {
 	if(req.body.css) {
 		// Since postcss plugins can't pass extra fields around easily,
 		// the plugin writes the JSON map out in the processing :(
@@ -29,15 +34,15 @@ app.post('/', (req, res) => {
 		    	return res.send({
 		    		version,
 		    		css,
-		    		messages: messages.map(message => message.text),
+		    		messages: messages.map(message => stripAnsi(message.text)),
 		    		map: require(jsonPath)
 		    	});
 		    })
 		    .then(() => fs.unlinkSync(jsonPath))
 			.catch(e => res.status(500).send(e.message))
-		} else {
-			res.status(500).send('Send some JSON that looks like this: {"css": ".red {color: red}"}');
-		}
+	} else {
+		res.status(500).send('Send some JSON that looks like this: {"css": ".red {color: red}"}');
+	}
 })
 
-app.listen(3000);
+app.listen(1337);
