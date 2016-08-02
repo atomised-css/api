@@ -1,0 +1,29 @@
+{
+  "name": "atomised-service",
+  "version": "0.1.0",
+  "description": "postcss-atomised as a service",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "now": "^0.19.0",
+    "postcss": "^5.1.1",
+    "postcss-atomised": "^0.3.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node index.js",
+    "publish": "now",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/atomised-css/service.git"
+  },
+  "author": "Alex Sanders <a@snd.rs>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/atomised-css/service/issues"
+  },
+  "homepage": "https://github.com/atomised-css/service#readme"
+}
