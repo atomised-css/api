@@ -1,4 +1,5 @@
 const fs = require('fs');
+const path = require('path');
 
 const express = require('express');
 const app = express();
@@ -15,9 +16,9 @@ const stripAnsi = require('strip-ansi');
 const atomised = require('postcss-atomised');
 const version = require('postcss-atomised/package.json').version;
 
-app.get('/', (req, res) => res.send(`remote api for <a href="https://github.com/atomised-css/postcss-atomised">postcss-atomised</a> ${version}<br> POST some json that looks like <code>{"css": ".red {color: red}"}</code> to this URL`));
+app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
 
-app.post('/api', (req, res) => {
+app.post('/', (req, res) => {
 	// Since postcss plugins can't pass extra fields around easily,
 	// the plugin writes the JSON map out in the processing :(
 	// This is a crude way of making sure mulitple requests don't
