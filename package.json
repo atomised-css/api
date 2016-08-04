@@ -9,7 +9,7 @@
     "express": "^4.14.0",
     "now": "^0.19.0",
     "postcss": "^5.1.1",
-    "postcss-atomised": "^0.3.1",
+    "postcss-atomised": "^0.3.2",
     "strip-ansi": "^3.0.1"
   },
   "devDependencies": {},
