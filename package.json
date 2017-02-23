@@ -20,12 +20,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/atomised-css/service.git"
+    "url": "git+https://github.com/sndrs/service.git"
   },
   "author": "Alex Sanders <a@snd.rs>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/atomised-css/service/issues"
+    "url": "https://github.com/sndrs/service/issues"
   },
-  "homepage": "https://github.com/atomised-css/service#readme"
+  "homepage": "https://github.com/sndrs/service#readme"
 }
